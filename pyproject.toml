@@ -1,0 +1,9 @@
+[project]
+name = "taskfortriumphcompany"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow>=12.3.0",
+    "rembg[cpu]>=2.0.77",
+    "streamlit>=1.60.0",
+]

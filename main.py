@@ -15,13 +15,6 @@ st.set_page_config(
 )
 
 description = {
-    "birefnet-general-lite": {
-        "Режим": "Сбалансированный (Но не доступен из-за ограничений на память в бесплатной версии streamlit)",
-        "Особенности": "Высокая точность сложных и тонких границ",
-        "Лучше использовать": (
-            "Фотографии людей, животных, товаров и сцены со сложным фоном"
-        ),
-    },
     "isnet-general-use": {
         "Режим": "Быстрый",
         "Особенности": "Хорошее качество при меньшей задержке",
@@ -68,14 +61,14 @@ with st.expander("Как выбрать модель", expanded=True):
     st.table(
         [
             {"Модель": model, **description[model]}
-            for model in MODELS[1:]
+            for model in MODELS
         ]
     )
 
 model_name = st.selectbox(
     "Выберите модель",
-    MODELS[1:],
-    index=MODELS[1:].index(DEFAULT_MODEL),
+    MODELS,
+    index=MODELS.index(DEFAULT_MODEL),
 )
 
 selected_model = description[model_name]

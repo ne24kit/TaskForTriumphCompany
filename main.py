@@ -12,12 +12,11 @@ from rembg import new_session, remove
 
 st.set_page_config(
     page_title="Удаление фона с изображения",
-    page_icon="✂️",
 )
 
 description = {
     "birefnet-general-lite": {
-        "Режим": "Сбалансированный",
+        "Режим": "Сбалансированный (Но не доступен из-за ограничений на память в бесплатной версии streamlit)",
         "Особенности": "Высокая точность сложных и тонких границ",
         "Лучше использовать": (
             "Фотографии людей, животных, товаров и сцены со сложным фоном"
@@ -47,7 +46,7 @@ description = {
 }
 
 MODELS = list(description)
-DEFAULT_MODEL = "birefnet-general-lite"
+DEFAULT_MODEL = "isnet-general-use"
 
 
 @st.cache_resource(
@@ -69,14 +68,14 @@ with st.expander("Как выбрать модель", expanded=True):
     st.table(
         [
             {"Модель": model, **description[model]}
-            for model in MODELS
+            for model in MODELS[1:]
         ]
     )
 
 model_name = st.selectbox(
     "Выберите модель",
-    MODELS,
-    index=MODELS.index(DEFAULT_MODEL),
+    MODELS[1:],
+    index=MODELS[1:].index(DEFAULT_MODEL),
 )
 
 selected_model = description[model_name]
